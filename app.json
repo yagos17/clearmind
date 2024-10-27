@@ -12,17 +12,24 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.yago.sona.clearmind"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.yago.sona.clearmind"
     },
     "web": {
       "favicon": "./assets/favicon.png",
       "bundler": "webpack"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b22e91b0-1f7f-4ead-be85-475b79506cec"
+      }
     }
   }
 }
