@@ -103,11 +103,12 @@ export const style = StyleSheet.create({
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
     },
     modalContent: {
-        width: '80%',
+        width: '75%',
         backgroundColor: themes.colors.bgScreen,
         borderRadius: 24,
-        padding: 20,
-    },    
+        padding: 10,
+        maxHeight: '75%',
+    },
     modalTitle: {
         fontSize: 18,
         marginBottom: 10,
@@ -116,15 +117,15 @@ export const style = StyleSheet.create({
         fontWeight: 'bold',
     },
     modalText: {
-        color: 'white',
+        color: 'black', 
         fontSize: 14,
         marginBottom: 10,
         textAlign: 'left',
-    },
+    },    
     modalSectionTitle: {
         fontSize: 16,
         fontWeight: 'bold',
-        color: 'white',
+        color: 'black',
         marginTop: 10,
     },
     moodButton: {
@@ -143,13 +144,6 @@ export const style = StyleSheet.create({
         alignItems: 'center',
         width: '100%',
     },
-    clickableBox: {
-        backgroundColor: 'white',
-        borderRadius: 24,
-        padding: 15,
-        alignItems: 'center',
-        marginVertical: 20,
-    },
     boxImg: {
         width: 80,
         height: 80,
@@ -164,25 +158,7 @@ export const style = StyleSheet.create({
         width: 100, 
         height: 100, 
         marginBottom: 20, 
-        alignSelf: 'center'
-    },
-    modalContent: {
-        width: '75%',
-        backgroundColor: themes.colors.bgScreen,
-        borderRadius: 24,
-        padding: 10,
-        maxHeight: '75%', 
-    },
-    modalText: {
-        color: 'black', 
-        fontSize: 14,
-        marginBottom: 10,
-        textAlign: 'left',
-    },    
-    modalSectionTitle: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        textAlign: 'center',
+        alignSelf: 'center',
     },
     linkText: {
         color: 'black', 
@@ -207,5 +183,18 @@ export const style = StyleSheet.create({
         color: 'black', 
         fontSize: 12,
         textAlign: 'left',
-    }    
+    },
+    scrollContainer: {
+        flexDirection: 'row',
+        marginVertical: 20,
+    },
+    clickableBox: {
+        backgroundColor: 'white',
+        borderRadius: 24,
+        padding: 15,
+        alignItems: 'center',
+        marginRight: 10, 
+        width: 100, 
+        height: 100, 
+    },
 });
