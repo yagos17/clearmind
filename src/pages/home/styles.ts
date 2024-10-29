@@ -60,23 +60,6 @@ export const style = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
     },
-    buttonsContainer: {
-        flexDirection: 'row',
-        alignItems: 'flex-start',
-        justifyContent: 'space-between',
-        marginTop: 40,
-    },
-    buttonTopics: {
-        backgroundColor: 'white',
-        borderRadius: 24,
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: 40,
-        width: 100,
-    },
-    textTopics: {
-        fontSize: 10,
-    },
     boxMessage: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -196,5 +179,11 @@ export const style = StyleSheet.create({
         marginRight: 10, 
         width: 100, 
         height: 100, 
+    },
+    topicTitle: {  
+        fontSize: 24,
+        fontWeight: 'bold',
+        marginVertical: 20,
+        textAlign: 'center',
     },
 });

@@ -5,35 +5,20 @@ import { themes } from "../../global/themes";
 import moodImage from '../../assets/img/MoodImage.png'; 
 
 export default function Home() {
-    const [activeButton, setActiveButton] = useState(null);
     const [modalVisible, setModalVisible] = useState(false);
     const [meditationModalVisible, setMeditationModalVisible] = useState(false);
     const [moodLevel, setMoodLevel] = useState(null);
 
-    const handleButtonPress = (buttonName) => {
-        setActiveButton(buttonName);
-    };
-
-    const handleStartPress = () => {
-        setModalVisible(true);  
-    };
-
-    const handleMoodResponse = (level) => {
-        setMoodLevel(level);
-        setModalVisible(false);
-        alert(`Seu nível de humor é: ${level}`);
-    };
-
     return (
         <View style={style.container}>
             <Header />
-            <InfoBox onStartPress={handleStartPress} />
-            <TopicButtons 
-                activeButton={activeButton}
-                onButtonPress={handleButtonPress}
-            />
+            <InfoBox onStartPress={() => setModalVisible(true)} />
+            
+            {/* Título de Tópicos */}
+            <Text style={style.topicTitle}>Tópicos</Text>
+
             <ScrollView horizontal showsHorizontalScrollIndicator={false} style={style.scrollContainer}>
-                <ClickableBox title="Meditação" onPress={() => setMeditationModalVisible(true)} />
+                <ClickableBox title="Meditação" onPress={() => setMeditationModalVisible(true)} titleSize={12} />
                 <ClickableBox title="Tópico 1" onPress={() => {}} />
                 <ClickableBox title="Tópico 2" onPress={() => {}} />
                 <ClickableBox title="Tópico 3" onPress={() => {}} />
@@ -121,13 +106,13 @@ export default function Home() {
 }
 
 // Componente da caixa clicável
-const ClickableBox = ({ title, onPress }) => (
+const ClickableBox = ({ title, onPress, titleSize }) => (
     <TouchableOpacity style={style.clickableBox} onPress={onPress}>
         <Image 
             source={require('../../assets/img/Meditation.png')} 
             style={style.boxImg}
         />
-        <Text style={style.boxTitle}>{title}</Text>
+        <Text style={[style.boxTitle, { fontSize: titleSize }]}>{title}</Text>
     </TouchableOpacity>
 );
 
@@ -163,26 +148,6 @@ const InfoBox = ({ onStartPress }) => (
         >
             <Text style={style.buttonText}>Iniciar</Text>
         </TouchableOpacity>
-    </View>
-);
-
-const TopicButtons = ({ activeButton, onButtonPress }) => (
-    <View style={style.buttonsContainer}>
-        {['Todos os tópicos', 'Seus tópicos', 'Recomendados'].map((topic) => (
-            <TouchableOpacity 
-                key={topic}
-                style={[ 
-                    style.buttonTopics, 
-                    { backgroundColor: activeButton === topic ? themes.colors.primary : 'white' }
-                ]}
-                activeOpacity={0.7} 
-                accessibilityLabel={topic}
-                accessibilityHint={`Press to proceed to the ${topic.toLowerCase()}`}
-                onPress={() => onButtonPress(topic)}
-            >
-                <Text style={style.textTopics}>{topic}</Text>
-            </TouchableOpacity>
-        ))}
     </View>
 );
 
