@@ -105,14 +105,11 @@ export const style = StyleSheet.create({
         marginBottom: 10,
         textAlign: 'left',
     },    
-    modalSectionTitle: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        color: 'black',
-        marginTop: 10,
+    buttonContainer: {
+        marginVertical: 20,
     },
     moodButton: {
-        padding: 10,
+        padding: 15,
         marginVertical: 5,
         backgroundColor: 'white',
         borderRadius: 24,

@@ -1,29 +1,47 @@
 import React, { useState } from "react";
-import { View, Text, Image, TouchableOpacity, Modal, ScrollView, Linking } from 'react-native';
+import { View, Text, Image, TouchableOpacity, Modal, ScrollView, Linking, Alert } from 'react-native';
 import { style } from "./styles";
-import { themes } from "../../global/themes";
 import moodImage from '../../assets/img/MoodImage.png'; 
 
 export default function Home() {
     const [modalVisible, setModalVisible] = useState(false);
     const [meditationModalVisible, setMeditationModalVisible] = useState(false);
-    const [moodLevel, setMoodLevel] = useState(null);
+
+    const handleMoodSelection = (mood) => {
+        let response;
+        switch (mood) {
+            case 'brilhante':
+                response = { message: "Você está se sentindo feliz!", tip: "Continue fazendo o que te faz bem." };
+                break;
+            case 'estavel':
+                response = { message: "Você está se sentindo neutro.", tip: "Tente se conectar com coisas que te trazem alegria." };
+                break;
+            case 'pesada':
+                response = { message: "Você está se sentindo triste.", tip: "É importante falar sobre isso. Considere conversar com alguém." };
+                break;
+            default:
+                response = { message: "", tip: "" };
+        }
+
+        // Exibir o alerta
+        Alert.alert(
+            response.message,
+            response.tip,
+            [{ text: "OK", onPress: () => console.log("OK Pressed") }]
+        );
+
+        setModalVisible(false); // Fecha o modal
+    };
 
     return (
         <View style={style.container}>
             <Header />
             <InfoBox onStartPress={() => setModalVisible(true)} />
             
-            {/* Título de Tópicos */}
             <Text style={style.topicTitle}>Tópicos</Text>
 
             <ScrollView horizontal showsHorizontalScrollIndicator={false} style={style.scrollContainer}>
                 <ClickableBox title="Meditação" onPress={() => setMeditationModalVisible(true)} titleSize={12} />
-                <ClickableBox title="Tópico 1" onPress={() => {}} />
-                <ClickableBox title="Tópico 2" onPress={() => {}} />
-                <ClickableBox title="Tópico 3" onPress={() => {}} />
-                <ClickableBox title="Tópico 4" onPress={() => {}} />
-                <ClickableBox title="Tópico 5" onPress={() => {}} />
             </ScrollView>
             <DailyMessage />
 
@@ -40,8 +58,23 @@ export default function Home() {
                             source={moodImage}
                             style={style.moodImage}
                         />
-                        <Text style={style.modalTitle}>Se você pudesse descrever a sua vida atual com uma palavra, qual seria?</Text>
-                        {/* ... (restante do modal) ... */}
+                        <Text style={style.modalTitle}>Qual palavra melhor descreve sua energia atualmente?</Text>
+                        
+                        <View style={style.buttonContainer}>
+                            <TouchableOpacity onPress={() => handleMoodSelection('brilhante')} style={style.moodButton}>
+                                <Text style={style.moodButtonText}>Brilhante</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => handleMoodSelection('estavel')} style={style.moodButton}>
+                                <Text style={style.moodButtonText}>Estável</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => handleMoodSelection('pesada')} style={style.moodButton}>
+                                <Text style={style.moodButtonText}>Pesada</Text>
+                            </TouchableOpacity>
+                        </View>
+
+                        <TouchableOpacity onPress={() => setModalVisible(false)} style={style.closeButton}>
+                            <Text>Fechar</Text>
+                        </TouchableOpacity>
                     </View>
                 </View>
             </Modal>
@@ -62,35 +95,7 @@ export default function Home() {
                         <Text style={style.modalTitle}>Guia de Meditação</Text>
                         <Text style={style.modalText}>Conteúdos gratuitos, músicas e dicas:</Text>
 
-                        <Text style={style.modalSectionTitle}>Conteúdos Gratuitos</Text>
-                        <TouchableOpacity onPress={() => Linking.openURL('https://www.youtube.com/user/TheHonestGuys')} style={style.linkContainer}>
-                            <Image source={require('../../assets/img/Brain.png')} style={style.linkIcon} />
-                            <Text style={style.linkText}>Meditações guiadas (YouTube)</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={() => Linking.openURL('https://www.mindful.org')} style={style.linkContainer}>
-                            <Image source={require('../../assets/img/Brain.png')} style={style.linkIcon} />
-                            <Text style={style.linkText}>Artigos sobre meditação (Mindful)</Text>
-                        </TouchableOpacity>
-
-                        <Text style={style.modalSectionTitle}>Músicas</Text>
-                        <TouchableOpacity onPress={() => Linking.openURL('https://www.youtube.com/results?search_query=nature+sounds')} style={style.linkContainer}>
-                            <Image source={require('../../assets/img/Brain.png')} style={style.linkIcon} />
-                            <Text style={style.linkText}>Playlist de sons da natureza</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={() => Linking.openURL('https://freemusicarchive.org/genre/Relaxation/')} style={style.linkContainer}>
-                            <Image source={require('../../assets/img/Brain.png')} style={style.linkIcon} />
-                            <Text style={style.linkText}>Músicas relaxantes para meditar</Text>
-                        </TouchableOpacity>
-
-                        <Text style={style.modalSectionTitle}>Dicas</Text>
-                        <TouchableOpacity onPress={() => Linking.openURL('https://www.headspace.com/blog')} style={style.linkContainer}>
-                            <Image source={require('../../assets/img/Brain.png')} style={style.linkIcon} />
-                            <Text style={style.linkText}>Dicas adicionais (Headspace Blog)</Text>
-                        </TouchableOpacity>
-
-                        <Text style={style.modalDisclaimer}>
-                            * O conteúdo mencionado é de terceiros. Estou apenas divulgando para ajudar na prática de meditação.
-                        </Text>
+                        {/* Links para meditação e dicas... */}
 
                         <TouchableOpacity 
                             style={style.closeButton} 
@@ -142,9 +147,7 @@ const InfoBox = ({ onStartPress }) => (
         <TouchableOpacity 
             style={style.button}
             activeOpacity={0.7} 
-            accessibilityLabel="Iniciar"
-            accessibilityHint="Press to proceed to the forms screen"
-            onPress={onStartPress} // Passa a função para o botão
+            onPress={onStartPress}
         >
             <Text style={style.buttonText}>Iniciar</Text>
         </TouchableOpacity>
