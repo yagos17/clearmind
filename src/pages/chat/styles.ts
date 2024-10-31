@@ -14,6 +14,7 @@ export const style = StyleSheet.create({
         padding: 10,
         backgroundColor: 'white',
         marginTop: 70,
+        borderRadius: 24,
     },
     userMessage: {
         alignSelf: 'flex-end',
@@ -22,6 +23,7 @@ export const style = StyleSheet.create({
         padding: 10,
         marginVertical: 5,
         maxWidth: '100%',
+        borderRadius: 24,
     },
     botMessage: {
         alignSelf: 'flex-start',
@@ -30,6 +32,7 @@ export const style = StyleSheet.create({
         padding: 10,
         marginVertical: 5,
         maxWidth: '100%',
+        borderRadius: 24,
     },
     input: {
         height: 40,
@@ -38,11 +41,13 @@ export const style = StyleSheet.create({
         paddingHorizontal: 75,
         marginBottom: 30,
         backgroundColor: 'white',
+        borderRadius: 24,
     },
     button: {
         backgroundColor: themes.colors.primary,
         padding: 10,
         alignItems: 'center',
         marginBottom: 30,
+        borderRadius: 12,
     },
 })

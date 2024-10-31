@@ -160,7 +160,7 @@ export default function Home() {
                             style={style.closeButton} 
                             onPress={() => setMeditationModalVisible(false)}
                         >
-                            <Text>FECHAR</Text>
+                            <Text>Fechar</Text>
                         </TouchableOpacity>
                     </ScrollView>
                 </View>
@@ -196,7 +196,7 @@ export default function Home() {
                             style={style.closeButton} 
                             onPress={() => setBreathingModalVisible(false)}
                         >
-                            <Text>FECHAR</Text>
+                            <Text>Fechar</Text>
                         </TouchableOpacity>
                     </ScrollView>
                 </View>
@@ -226,20 +226,10 @@ export default function Home() {
                         />
 
                         <TouchableOpacity 
-                            style={style.saveButton}
-                            onPress={() => {
-                                Alert.alert("Entrada salva!", "Seu diário foi atualizado.");
-                                setDiaryEntry('');
-                            }}
-                        >
-                            <Text style={style.saveButtonText}>Salvar</Text>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity 
                             style={style.closeButton} 
                             onPress={() => setDailyModalVisible(false)}
                         >
-                            <Text>FECHAR</Text>
+                            <Text>Fechar</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -258,7 +248,7 @@ export default function Home() {
                             source={contentsImage} 
                             style={style.moodImage} 
                         />
-                        <Text style={style.modalTitle}>Conteúdos</Text>
+                        <Text style={style.modalTitle}>Guia de Conteúdos</Text>
                         <Text style={style.modalText}>Alguns conteúdos que podem enriquecer seu conhecimento sobre saúde mental:</Text>
                         
                         <TouchableOpacity 
@@ -268,7 +258,7 @@ export default function Home() {
                             <Image source={require('../../assets/img/spotify.png')} style={style.linkIcon} />
                             <Text style={style.linkText}>AnsiedadeCast</Text>
                         </TouchableOpacity>
-                        <Text style={style.modalDisclaimer}>Por [Psicóloga Thalita Couto] - [https://open.spotify.com/show/2DrJJ5V1ZKAOJipWJP6jqy?si=8c187eb9ece94873]</Text>
+                        <Text style={style.modalDisclaimer}>Por [Psicóloga Thalita Couto] </Text>
 
                         <TouchableOpacity 
                             style={style.linkContainer} 
@@ -277,13 +267,13 @@ export default function Home() {
                             <Image source={require('../../assets/img/spotify.png')} style={style.linkIcon} />
                             <Text style={style.linkText}>Tratando sua Ansiedade</Text>
                         </TouchableOpacity>
-                        <Text style={style.modalDisclaimer}>Por [Laura Tomasini Potrich] - [https://open.spotify.com/show/2ChmAxHXJtF9n6cw1lkKdB?si=33ec25fed24f42d3]</Text>
+                        <Text style={style.modalDisclaimer}>Por [Laura Tomasini Potrich] </Text>
 
                         <TouchableOpacity 
                             style={style.closeButton} 
                             onPress={() => setContentsModalVisible(false)}
                         >
-                            <Text>FECHAR</Text>
+                            <Text>Fechar</Text>
                         </TouchableOpacity>
                     </ScrollView>
                 </View>
@@ -304,17 +294,11 @@ export default function Home() {
                         />
                         <Text style={style.modalTitle}>Comunidade</Text>
 
-                        <Image 
-                            source={require('../../assets/img/Error.png')} // Substitua pelo caminho da imagem desejada
-                            style={style.noEventsImage} 
-                        />
-                        <Text style={style.noEventsText}>Sem eventos</Text>
-
                         <TouchableOpacity 
                             style={style.closeButton} 
                             onPress={() => setCommunityModalVisible(false)}
                         >
-                            <Text>FECHAR</Text>
+                            <Text>Fechar</Text>
                         </TouchableOpacity>
                     </ScrollView>
                 </View>
@@ -333,13 +317,13 @@ export default function Home() {
                             source={integrationImage} 
                             style={style.moodImage} 
                         />
-                        <Text style={style.modalTitle}>Desafio Semanal: Integração</Text>
+                        <Text style={style.modalTitle}>Integração</Text>
                         <Text style={style.modalText}>Desafio: Pratique a Gratidão.</Text>
                         <Text style={style.modalText}>Durante esta semana, escreva diariamente uma coisa pela qual você é grato.</Text>
                         <Text style={style.modalText}>Objetivo: Aumentar a conscientização sobre as coisas boas da sua vida.</Text>
 
                         <Text style={style.modalText}>Você cumpriu o desafio?</Text>
-                        <View style={style.buttonContainer}>
+                        <View style={style.challengeButtonContainer}>
                             <TouchableOpacity onPress={() => handleChallengeResponse(true)} style={style.challengeButton}>
                                 <Text style={style.challengeButtonText}>Sim</Text>
                             </TouchableOpacity>
@@ -348,20 +332,11 @@ export default function Home() {
                             </TouchableOpacity>
                         </View>
 
-                        <Text style={style.modalText}>Reflexões:</Text>
-                        <TextInput
-                            style={style.textInput}
-                            placeholder="Escreva suas reflexões aqui..."
-                            multiline
-                            value={reflectionText}
-                            onChangeText={setReflectionText}
-                        />
-
                         <TouchableOpacity 
                             style={style.closeButton} 
                             onPress={() => setIntegrationModalVisible(false)}
                         >
-                            <Text>FECHAR</Text>
+                            <Text>Fechar</Text>
                         </TouchableOpacity>
                     </ScrollView>
                 </View>

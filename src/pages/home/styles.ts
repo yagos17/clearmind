@@ -144,7 +144,7 @@ export const style = StyleSheet.create({
     },
     // Estilo do botão de fechar
     closeButton: {
-        marginTop: 20,
+        marginTop: 10,
         padding: 10,
         backgroundColor: 'white',
         borderRadius: 24,
@@ -195,7 +195,6 @@ export const style = StyleSheet.create({
     // Estilo do container do scroll
     scrollContainer: {
         flexDirection: 'row',
-        marginVertical: 20,
     },
     // Estilo da caixa clicável
     clickableBox: {
@@ -250,7 +249,7 @@ export const style = StyleSheet.create({
         backgroundColor: themes.colors.primary,
         borderRadius: 24,
         padding: 10,
-        marginVertical: 5,
+        marginVertical: 25,
         width: '80%',
         alignItems: 'center',
     },
@@ -259,18 +258,23 @@ export const style = StyleSheet.create({
         fontWeight: 'bold',
         color: 'white',
     },
-    // Estilo da imagem quando não há eventos
-    noEventsImage: {
-        width: 200, 
-        height: 200, 
-        marginBottom: 10, 
+    // Container dos botões na integração
+    challengeButtonContainer: {
+        flexDirection: 'row', // Para alinhar os botões lado a lado
+        justifyContent: 'space-between', // Para espaçar os botões igualmente
+        marginVertical: 5, // Margem vertical opcional
     },
-    // Texto quando não há eventos
-    noEventsText: {
-        textAlign: 'center', 
-        fontSize: 14, 
-        color: 'black', 
-        marginVertical: 10, 
+    // Botão de integração
+    challengeButton: {
+        backgroundColor: themes.colors.primary,
+        borderRadius: 12,
+        padding: 10,
+        marginVertical: 5,
+        margin: 10,
+    },
+    // Texto do botão de integração
+    challengeButtonText: {
         fontWeight: 'bold',
-    },    
+        color: 'white',
+    },
 });
