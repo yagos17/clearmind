@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native";
 import { themes } from "../../global/themes";
 
+// Estilos da tela
 export const style = StyleSheet.create({
     container: {
         flex: 1,
@@ -83,7 +84,7 @@ export const style = StyleSheet.create({
     },
     topicItem: {
         width: '48%',
-        marginBottom:10,
+        marginBottom: 10,
         alignItems: 'center', 
         padding: 10, 
         backgroundColor: '#D4D4D4', 

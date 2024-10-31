@@ -15,12 +15,14 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { themes } from "../../global/themes";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 
+// Dados principais da tela
 const mainData = {
     title: "Clear Mind",
     text: "Sua jornada para uma mente mais saudável começa aqui: juntos, superamos desafios e celebramos conquistas.",
     image: mainImage
 };
 
+// Dados dos tópicos disponíveis
 const topicData = [
     { title: "Meditação", image: require('../../assets/img/Meditation.png') },
     { title: "Respiração", image: require('../../assets/img/Breathing.png') },
@@ -31,11 +33,12 @@ const topicData = [
 ];
 
 export default function Start() {
-    const navigation = useNavigation<NavigationProp<any>>();
-    const { width: screenWidth } = useWindowDimensions(); 
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [selectedTopics, setSelectedTopics] = useState<number[]>([]);
+    const navigation = useNavigation<NavigationProp<any>>(); // Navegação
+    const { width: screenWidth } = useWindowDimensions(); // Largura da tela
+    const [currentIndex, setCurrentIndex] = useState(0); // Índice atual do carrossel
+    const [selectedTopics, setSelectedTopics] = useState<number[]>([]); // Tópicos selecionados
 
+    // Função para navegar para a tela "Home"
     const handlePress = async () => {
         try {
             navigation.navigate("BottomRoutes", { screen: "Home" });
@@ -45,11 +48,13 @@ export default function Start() {
         }
     };
 
+    // Função para lidar com o scroll do carrossel
     const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
         const index = Math.floor(event.nativeEvent.contentOffset.x / screenWidth);
         setCurrentIndex(index);
     };
 
+    // Função para alternar a seleção de tópicos
     const toggleSelectTopic = (index: number) => {
         setSelectedTopics(prev =>
             prev.includes(index) 
@@ -58,7 +63,7 @@ export default function Start() {
         );
     };
 
-    const totalItems = 2; // Total number of dots in the carousel
+    const totalItems = 2; // Total de itens no carrossel
 
     return (
         <View style={style.container}>
@@ -70,7 +75,7 @@ export default function Start() {
                 scrollEventThrottle={16}
                 style={style.scrollView}
             >
-                {/* First Carousel Item */}
+                {/* Primeiro item do carrossel */}
                 <View style={[style.carouselItem, { width: screenWidth }]}>
                     <View style={style.boxTop}>
                         <Image 
@@ -92,7 +97,7 @@ export default function Start() {
                     </View>
                 </View>
 
-                {/* Second Carousel Item */}
+                {/* Segundo item do carrossel */}
                 <View style={[style.carouselItem, { width: screenWidth }]}>
                     <View style={style.boxMid}>
                         <Text style={style.textTopic}>Escolha os tópicos do seu interesse</Text>
@@ -103,7 +108,7 @@ export default function Start() {
                                 {topicData.map((topic, index) => (
                                     <TouchableOpacity 
                                         key={index} 
-                                        style={[
+                                        style={[ 
                                             style.topicItem,
                                             selectedTopics.includes(index) && { backgroundColor: 'white' } 
                                         ]}
@@ -119,6 +124,7 @@ export default function Start() {
                 </View>                         
             </ScrollView>
 
+            {/* Indicadores do carrossel */}
             <View style={style.boxBottom}>
                 {[...Array(totalItems)].map((_, index) => (
                     <MaterialIcons 
@@ -131,6 +137,7 @@ export default function Start() {
                 ))}
             </View>
 
+            {/* Botão de avançar */}
             <View style={style.boxBaseboard}>
                 <TouchableOpacity 
                     style={style.button} 
